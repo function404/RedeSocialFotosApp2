@@ -14,34 +14,34 @@ export default function Register() {
   const [Password, setPassword] = useState('');
   const [PasswordC, setPasswordC] = useState('');
 
-  const [isloading, setLoading] = React.useState('account')
-  const [isloadingBol, setLoadingBol] = React.useState(false)
+  const [isloading, setLoading] = React.useState('account');
+  const [isloadingBol, setLoadingBol] = React.useState(false);
 
   const [TextButton, setTextButton] = React.useState('Registrar');
 
   function handleRegister() {
     if (Email !== '' && Password !== '' && PasswordC !== '') {
       if (Password !== PasswordC) {
-        console.log('Senha não confere')
+        console.log('Senha não confere');
         return;
       }
-      setLoading('loading')
-      setLoadingBol(true)
-      setTextButton('Carregando...')
+      setLoading('loading');
+      setLoadingBol(true);
+      setTextButton('Carregando...');
       setTimeout(() => {
         createUserWithEmailAndPassword(auth, Email, Password)
-        .then((userCredential) => {
-          console.log('Usuário cadastrado com sucesso');
-          setLoading('account');
-          setEmail('');
-          setPassword('');
-          setPasswordC('');
-          setLoadingBol(false);
-          setTextButton('Registrar');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+          .then((userCredential) => {
+            console.log('Usuário cadastrado com sucesso');
+            setLoading('account');
+            setEmail('');
+            setPassword('');
+            setPasswordC('');
+            setLoadingBol(false);
+            setTextButton('Registrar');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }, 4000);
     } else {
       console.log('Preencha todas as informções');
@@ -51,45 +51,69 @@ export default function Register() {
 
   return (
     <View style={styles.container}>
-      
-      <Animatable.View animation='fadeInDown' delay={500} style={{width:'90%', justifyContent: 'center', alignItems: 'center'}}>
-        
+      <Animatable.View
+        animation='fadeInDown'
+        delay={500}
+        style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }}
+      >
         <View style={styles.form}>
-
           <View style={styles.formContent}>
-            <Text style={styles.title}>
-              Registrar-se
-            </Text>
+            <Text style={styles.title}>Registrar-se</Text>
           </View>
 
           <View style={styles.formContent}>
-            <Text>
-              Insira todas as informações para se registrar.
-            </Text>
+            <Text>Insira todas as informações para se registrar.</Text>
           </View>
 
           <View style={styles.formContent}>
-            <TextInput styles={styles.input} label={'Email'} placeholder={'Digite...'} value={Email} onChangeText={setEmail} mode='outlined'/>
+            <TextInput
+              styles={styles.input}
+              label={'Email'}
+              placeholder={'Digite...'}
+              value={Email}
+              onChangeText={setEmail}
+              mode='outlined'
+            />
           </View>
 
           <View style={styles.formContent}>
-            <TextInput styles={styles.input} label={'Senha'} placeholder={'Digite...'} value={Password} secureTextEntry={true} onChangeText={setPassword} mode='outlined'/>
+            <TextInput
+              styles={styles.input}
+              label={'Senha'}
+              placeholder={'Digite...'}
+              value={Password}
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              mode='outlined'
+            />
           </View>
 
           <View style={styles.formContent}>
-            <TextInput styles={styles.input} label={'Confirmar Senha'} placeholder={'Digite...'} value={PasswordC} secureTextEntry={true} onChangeText={setPasswordC} mode='outlined'/>
+            <TextInput
+              styles={styles.input}
+              label={'Confirmar Senha'}
+              placeholder={'Digite...'}
+              value={PasswordC}
+              secureTextEntry={true}
+              onChangeText={setPasswordC}
+              mode='outlined'
+            />
           </View>
 
           <View style={styles.formContent}>
-            <Button icon={isloading} disabled={isloadingBol} loading={isloadingBol} style={styles.formButton} labelStyle={{ color: '#fff' }} onPress={handleRegister}>
+            <Button
+              icon={isloading}
+              disabled={isloadingBol}
+              loading={isloadingBol}
+              style={styles.formButton}
+              labelStyle={{ color: '#fff' }}
+              onPress={handleRegister}
+            >
               {TextButton}
             </Button>
           </View>
-
         </View>
-
       </Animatable.View>
-
     </View>
   );
 }

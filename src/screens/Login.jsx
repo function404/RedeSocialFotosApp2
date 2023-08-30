@@ -13,9 +13,8 @@ export default function Login({ navigation }) {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
-  const [isloading, setLoading] = React.useState('login')
-  const [isloadingBol, setLoadingBol] = React.useState(false)
-
+  const [isloading, setLoading] = React.useState('login');
+  const [isloadingBol, setLoadingBol] = React.useState(false);
   const [getTextButton, setTextButton] = React.useState('Entrar');
 
   useEffect(() => {
@@ -25,73 +24,97 @@ export default function Login({ navigation }) {
       }
     });
     return unsubscribe;
-  }, [])
+  }, []);
 
   function handleLogin() {
     if (Email !== '' && Password !== '') {
-      setLoading('loading')
-      setLoadingBol(true)
-      setTextButton('Carregando...')
+      setLoading('loading');
+      setLoadingBol(true);
+      setTextButton('Carregando...');
       setTimeout(() => {
         signInWithEmailAndPassword(auth, Email, Password)
-        .then((userCredential) => {
-          console.log('Usuário logado com sucesso!');
-          navigation.navigate('home');
-          setEmail('');
-          setPassword('');
-          setLoading('login')
-          setLoadingBol(false)
-          setTextButton('Entrar')
-        })
-        .catch((error) => {
-          console.log(error);
-          setLoading('login')
-          setLoadingBol(false)
-          setTextButton('Entrar')
-        });
+          .then((userCredential) => {
+            console.log('Usuário logado com sucesso!');
+            navigation.navigate('home');
+            setEmail('');
+            setPassword('');
+            setLoading('login');
+            setLoadingBol(false);
+            setTextButton('Entrar');
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoading('login');
+            setLoadingBol(false);
+            setTextButton('Entrar');
+          });
       }, 4000);
     } else {
       console.log('Insira todas as informações');
     }
   }
-  
+
   return (
     <View style={styles.container}>
-
-      <Animatable.View animation='fadeInUp' delay={500} style={{width:'90%', justifyContent: 'center', alignItems: 'center'}}>
-        
+      <Animatable.View
+        animation='fadeInUp'
+        delay={500}
+        style={{ width: '90%', justifyContent: 'center', alignItems: 'center' }}
+      >
         <View style={styles.form}>
-
           <View style={styles.formContent}>
-            <Text style={styles.title}>
-              Logar-se
-            </Text>
+            <Text style={styles.title}>Logar-se</Text>
           </View>
 
           <View style={styles.formContent}>
-            <TextInput styles={styles.input} label={'Email'} placeholder={'Digite...'} value={Email} onChangeText={setEmail} mode='outlined'/>
+            <TextInput
+              styles={styles.input}
+              label={'Email'}
+              placeholder={'Digite...'}
+              value={Email}
+              onChangeText={setEmail}
+              mode='outlined'
+            />
           </View>
 
           <View style={styles.formContent}>
-            <TextInput styles={styles.input} label={'Senha'} placeholder={'Digite...'} value={Password} secureTextEntry={true} onChangeText={setPassword} mode='outlined'/>
+            <TextInput
+              styles={styles.input}
+              label={'Senha'}
+              placeholder={'Digite...'}
+              value={Password}
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              mode='outlined'
+            />
           </View>
 
           <View style={styles.formContent}>
-            <Button icon={isloading} disabled={isloadingBol} loading={isloadingBol} style={styles.formButton} labelStyle={{ color: '#fff' }} onPress={handleLogin}>
+            <Button
+              icon={isloading}
+              disabled={isloadingBol}
+              loading={isloadingBol}
+              style={styles.formButton}
+              labelStyle={{ color: '#fff' }}
+              onPress={handleLogin}
+            >
               {getTextButton}
             </Button>
           </View>
 
           <View style={styles.formContent}>
             <Text>
-              Não tem uma conta?{' '}<Text style={{ color: '#1E90FF' }} onPress={() => navigation.navigate('Registrar-se')}>Cadastre-se.</Text>
+              Não tem uma conta?{' '}
+              <Text
+                style={{ color: '#1E90FF' }}
+                onPress={() => navigation.navigate('Registrar-se')}
+              >
+                Cadastre-se.
+              </Text>
             </Text>
           </View>
-
         </View>
-
       </Animatable.View>
-
     </View>
   );
-};
+}
