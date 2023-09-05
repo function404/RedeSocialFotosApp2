@@ -10,6 +10,8 @@ import styles from '../ui/styles';
 export default function ImageListType() {
   const [imageUrls, setImageUrls] = useState([]);
 
+  const [likedItems, setLikedItems] = useState({});
+
   useEffect(() => {
     const imagesRef = ref(storage);
 
@@ -28,6 +30,9 @@ export default function ImageListType() {
       });
   }, []);
 
+  const handleLikeToggle = (e) => {
+    setLikedItems((prevLikedItems) => ({...prevLikedItems, [e]: !prevLikedItems[e]}))
+  }
 
   return (
     <View>
@@ -35,7 +40,7 @@ export default function ImageListType() {
       <FlatList
         data={imageUrls}
         keyExtractor={(index) => index.toString()}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <>
             <Image
               source={{ uri: item }}
@@ -51,26 +56,14 @@ export default function ImageListType() {
                 flexDirection: 'row',
               }}
             >
-              <View
-                style={{
-                  marginRight: 5,
-                }}
-              >
-                <Ionicons name='heart-outline' size={24} color='black' />
+              <View style={{ alignItems: 'center',}}>
+                <Ionicons name={likedItems[index] ? 'heart' : 'heart-outline'} size={24} onPress={() => handleLikeToggle(index)} color={likedItems[index] ? 'red' : 'black'}/>
               </View>
               <View
                 style={{
                   marginRight: 5,
                 }}
               >
-                <Ionicons name='chatbubble-outline' size={24} color='black' />
-              </View>
-              <View
-                style={{
-                  marginRight: 5,
-                }}
-              >
-                <Ionicons name='send-outline' size={24} color='black' />
               </View>
             </View>
           </>
