@@ -68,7 +68,6 @@ export default function Login({ navigation }) {
 
           <View style={styles.formContent}>
             <TextInput
-              styles={styles.input}
               label={'Email'}
               placeholder={'Digite...'}
               value={Email}
@@ -79,7 +78,6 @@ export default function Login({ navigation }) {
 
           <View style={styles.formContent}>
             <TextInput
-              styles={styles.input}
               label={'Senha'}
               placeholder={'Digite...'}
               value={Password}

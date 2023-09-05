@@ -66,7 +66,6 @@ function TabsNavigation() {
       barStyle={{ backgroundColor: 'rgba(33, 150, 243, .1)' }}
     >
       <Tabs.Screen
-        style={{ fontWeight: 'bold' }}
         name='Logar-se'
         component={Login}
         options={{
@@ -81,7 +80,6 @@ function TabsNavigation() {
         }}
       />
       <Tabs.Screen
-        style={{ fontWeight: 'bold' }}
         name='Registrar-se'
         component={Register}
         options={{
@@ -103,11 +101,10 @@ function TabsNavigationLoggedIn() {
     <Tabs.Navigator
       initialRouteName='Feed'
       activeColor='rgba(33, 150, 243, .9)'
-      inactiveColor='#fff'
+      inactiveColor='black'
       barStyle={{ backgroundColor: 'rgba(33, 150, 243, .1)' }}
     >
       <Tabs.Screen
-        style={{ fontWeight: 'bold' }}
         name='Feed'
         component={Home}
         options={{
@@ -122,7 +119,6 @@ function TabsNavigationLoggedIn() {
         }}
       />
       <Tabs.Screen
-        style={{ fontWeight: 'bold' }}
         name='Enviar Imagem'
         component={ImagePickerExample}
         options={{

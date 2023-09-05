@@ -67,7 +67,6 @@ export default function Register() {
 
           <View style={styles.formContent}>
             <TextInput
-              styles={styles.input}
               label={'Email'}
               placeholder={'Digite...'}
               value={Email}
@@ -78,7 +77,6 @@ export default function Register() {
 
           <View style={styles.formContent}>
             <TextInput
-              styles={styles.input}
               label={'Senha'}
               placeholder={'Digite...'}
               value={Password}
@@ -90,7 +88,6 @@ export default function Register() {
 
           <View style={styles.formContent}>
             <TextInput
-              styles={styles.input}
               label={'Confirmar Senha'}
               placeholder={'Digite...'}
               value={PasswordC}

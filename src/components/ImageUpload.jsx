@@ -56,7 +56,7 @@ export default function ImagePickerExample() {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <View>
         <Header title='Enviar Imagem'/>
       </View>
