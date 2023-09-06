@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -61,10 +63,10 @@ function TabsNavigation() {
   return (
     <Tabs.Navigator
       initialRouteName='Logar-se'
-      activeColor='rgba(33, 150, 243, .9)'
-      inactiveColor='#fff'
-      barStyle={{ backgroundColor: 'rgba(33, 150, 243, .1)' }}
-    >
+      activeColor='rgb(33, 150, 243)'
+      inactiveColor='white'
+      barStyle={{ backgroundColor: 'rgba(33, 150, 243, .3)' }}
+      >
       <Tabs.Screen
         name='Logar-se'
         component={Login}
@@ -72,8 +74,8 @@ function TabsNavigation() {
           tabBarLabel: 'Logar-se',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name='home'
-              color={'rgb(33, 150, 243)'}
+              name='account'
+              color={color}
               size={26}
             />
           ),
@@ -86,8 +88,8 @@ function TabsNavigation() {
           tabBarLabel: 'Registrar-se',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name='home'
-              color={'rgb(33, 150, 243)'}
+              name='plus-box'
+              color={color}
               size={26}
             />
           ),
@@ -100,9 +102,9 @@ function TabsNavigationLoggedIn() {
   return (
     <Tabs.Navigator
       initialRouteName='Feed'
-      activeColor='rgba(33, 150, 243, .9)'
-      inactiveColor='black'
-      barStyle={{ backgroundColor: 'rgba(33, 150, 243, .1)' }}
+      activeColor='rgb(33, 150, 243)'
+      inactiveColor='white'
+      barStyle={{ backgroundColor: 'rgba(33, 150, 243, .3)' }}
     >
       <Tabs.Screen
         name='Feed'
@@ -112,7 +114,7 @@ function TabsNavigationLoggedIn() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name='home'
-              color={'rgb(33, 150, 243)'}
+              color={color}
               size={26}
             />
           ),
@@ -126,7 +128,7 @@ function TabsNavigationLoggedIn() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name='publish'
-              color={'rgb(33, 150, 243)'}
+              color={color}
               size={26}
             />
           ),

@@ -60,9 +60,11 @@ export default function ImagePickerExample() {
       <View>
         <Header title='Enviar Imagem'/>
       </View>
-      {image && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-      )}
+      <View style={styles.image}>
+        {image && (
+          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        )}
+      </View>
       <View style={styles.content}>
         <View style={styles.contentbtn}>
           <Button

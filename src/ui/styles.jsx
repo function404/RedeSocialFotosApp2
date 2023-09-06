@@ -36,6 +36,12 @@ const styles = StyleSheet.create({
     },
 
     //ImageUpload
+    image:{
+      flex: 1,
+      margin: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     button:{
       width: '70%',
     },
@@ -56,7 +62,7 @@ const styles = StyleSheet.create({
     //header
     header:{
       width: '100%',
-      backgroundColor: 'rgb(33, 150, 243)',
+      backgroundColor: 'rgba(33, 150, 243, .6)',
       padding: 40,
     },
     headerTextStyle: {
