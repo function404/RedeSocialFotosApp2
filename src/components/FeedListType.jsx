@@ -7,7 +7,7 @@ import { ref, getDownloadURL, listAll } from 'firebase/storage';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../ui/styles';
 
-export default function ImageListType() {
+export default function ImageListType({ navigation }) {
   const [imageUrls, setImageUrls] = useState([]);
 
   const [likedItems, setLikedItems] = useState({});
@@ -37,9 +37,22 @@ export default function ImageListType() {
   }
 
   return (
-    <View>
+    <View
+    style={{
+      flex: 1,
+      width: '50%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 10,
+  }}
+    >
         {imageUrls.length >= 1 ?
-      <ScrollView>  
+      <ScrollView
+      style={{
+        width: '100%',
+        height: 600,
+    }}
+    >  
         <FlatList
           data={imageUrls}
           keyExtractor={(index) => index.toString()}
@@ -52,6 +65,7 @@ export default function ImageListType() {
                   height: 200,
                   margin: 10,
                   alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               />
               <View
@@ -74,7 +88,15 @@ export default function ImageListType() {
         />
       </ScrollView>
       :
-        <View>
+        <View 
+        style={{ 
+          flex: 1,
+          width: '50%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 10,
+        }}
+        >
             <Text style={styles.not}>
                 Não há imagens para serem exibidas
             </Text>

@@ -9,7 +9,7 @@ import styles from "../ui/styles";
 import ImageListType from "../components/FeedListType";
 import Header from "../components/header";
 
-export default function Home() {
+export default function Home({ navigation }) {
   async function setLogOut() {
     const auth = getAuth();
 

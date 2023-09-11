@@ -48,7 +48,7 @@ export default function ImagePickerExample() {
     try {
       const ref = collection(db, 'images');
       await addDoc(ref, { imageURL });
-
+      navigation.navigate('home');
       console.log('URL da imagem adicionado ao Firestore');
     } catch (error) {
       console.error('Erro ao adicionar o URL da imagem ao Firestore: ', error);
